@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://quge5.com/88/tag.min.js" data-zone="205743" async data-cfasync="false"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Download best MOD APKs for Android. Premium Unlocked, Unlimited Money.">
+    <meta property="og:title" content="GiggyMod - Best MOD APK Store">
+    <meta property="og:image" content="">
+    <title>GiggyMod - Best MOD APK Store</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           1. CORE VARIABLES & RESET
+           ========================================= */
+        :root {
+            /* Colors */
+            --primary: #000000;
+            --secondary: #121212;
+            --accent: #00E676;
+            --accent-rgb: 0, 230, 118;
+            --accent-hover: #00C853;
+            --bg-body: #F7F9FC;
+            --bg-card: #FFFFFF;
+            --bg-glass: rgba(255, 255, 255, 0.95);
+            --text-main: #1A1A1A;
+            --text-sub: #718096;
+            --border: #E2E8F0;
+            --skeleton-start: #EDF2F7;
+            --skeleton-end: #E2E8F0;
+            
+            /* Dimensions & Spacing */
+            --header-height: 64px;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-float: 0 12px 30px rgba(0, 230, 118, 0.3);
+
+            /* Typography */
+            --font-head: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Transitions */
+            --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+            --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #050505;
+            --bg-card: #141414;
+            --bg-glass: rgba(20, 20, 20, 0.95);
+            --text-main: #FFFFFF;
+            --text-sub: #A0AEC0;
+            --border: #2D3748;
+            --skeleton-start: #1A202C;
+            --skeleton-end: #2D3748;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.6);
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0; padding-top: var(--header-height);
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar polish */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+
+        /* =========================================
+           2. ANIMATIONS & TRANSITIONS
+           ========================================= */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.4); } 70% { box-shadow: 0 0 0 15px rgba(var(--accent-rgb), 0); } 100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0); } }
+
+        .fade-in { animation: fadeIn 0.4s var(--ease-out) forwards; }
+        .slide-up { animation: slideUp 0.5s var(--ease-out) forwards; }
+        
+        /* Page Transition Wrapper */
+        #app-root {
+            min-height: calc(100vh - var(--header-height));
+            opacity: 1; transition: opacity 0.2s ease;
+        }
+        #app-root.switching { opacity: 0; }
+
+        /* Ripple Effect Logic */
+        .ripple { position: relative; overflow: hidden; transform: translate3d(0,0,0); }
+        .ripple:after {
+            content: ""; display: block; position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none;
+            background-image: radial-gradient(circle, rgba(0,0,0,0.1) 10%, transparent 10.01%);
+            background-repeat: no-repeat; background-position: 50%; transform: scale(10, 10); opacity: 0; transition: transform .5s, opacity 1s;
+        }
+        .ripple:active:after { transform: scale(0, 0); opacity: .2; transition: 0s; }
+
+        /* =========================================
+           3. UI COMPONENTS
+           ========================================= */
+        
+        /* 3.1 Header */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; height: var(--header-height);
+            background: var(--bg-glass); backdrop-filter: blur(12px);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 20px; z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .header.hidden { transform: translateY(-100%); }
+        
+        .header-logo {
+            font-family: var(--font-head); font-size: 1.5rem; font-weight: 800;
+            color: var(--text-main); letter-spacing: -0.03em; cursor: pointer;
+        }
+        .header-logo span { color: var(--accent); }
+        
+        .nav-btn {
+            width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: var(--text-main); transition: background 0.2s; background: transparent;
+        }
+        .nav-btn:active { background: rgba(0,0,0,0.05); transform: scale(0.92); }
+
+        /* 3.2 Cards */
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        .section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-top: 10px; }
+        .section-title { font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; position: relative; padding-left: 12px; }
+        .section-title::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 4px; background: var(--accent); border-radius: 4px; }
+        .view-all { font-size: 0.9rem; font-weight: 600; color: var(--accent); padding: 4px 12px; background: rgba(var(--accent-rgb), 0.08); border-radius: 20px; }
+
+        .app-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 16px;
+        }
+        @media(min-width: 768px) { .app-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 24px; } }
+
+        .app-card {
+            background: var(--bg-card); border-radius: var(--radius-md); padding: 16px;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer; position: relative; overflow: hidden;
+        }
+        .app-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .app-card:active { transform: scale(0.96); }
+
+        .card-icon { width: 72px; height: 72px; border-radius: 18px; margin-bottom: 12px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); background: var(--bg-body); }
+        .card-title { font-weight: 600; font-size: 0.95rem; line-height: 1.3; margin-bottom: 6px; width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 2.4em; }
+        .card-meta { font-size: 0.75rem; color: var(--text-sub); display: flex; align-items: center; gap: 6px; }
+        .card-badge { 
+            position: absolute; top: 10px; right: 10px; 
+            background: var(--accent); color: #000; font-size: 0.6rem; 
+            font-weight: 800; padding: 2px 6px; border-radius: 4px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+        }
+
+        /* 3.3 Skeletons */
+        .skeleton {
+            background: var(--skeleton-start);
+            background: linear-gradient(90deg, var(--skeleton-start) 25%, var(--skeleton-end) 50%, var(--skeleton-start) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 6px; color: transparent !important;
+        }
+        .sk-icon { width: 72px; height: 72px; border-radius: 18px; margin-bottom: 12px; }
+        .sk-text { height: 14px; width: 80%; margin-bottom: 6px; }
+        .sk-text-sm { height: 10px; width: 50%; }
+
+        /* 3.4 Search Overlay */
+        .search-modal {
+            position: fixed; inset: 0; background: var(--bg-body); z-index: 200;
+            display: flex; flex-direction: column;
+            transform: translateY(100%); transition: transform 0.3s var(--ease-out);
+        }
+        .search-modal.active { transform: translateY(0); }
+        
+        .search-bar-wrap {
+            padding: 10px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px;
+            background: var(--bg-card); height: var(--header-height);
+        }
+        .search-input {
+            flex: 1; border: none; background: transparent; font-size: 1.1rem; color: var(--text-main); font-family: var(--font-body);
+        }
+        .search-results { flex: 1; overflow-y: auto; padding: 16px; }
+        
+        /* Highlight match */
+        mark { background: rgba(0, 230, 118, 0.3); color: inherit; padding: 0 2px; border-radius: 2px; }
+
+        /* 3.5 App Details */
+        .hero-section {
+            padding: 30px 20px 40px; text-align: center; background: var(--bg-card);
+            border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
+            box-shadow: var(--shadow-sm); position: relative;
+        }
+        .hero-icon { width: 110px; height: 110px; border-radius: 26px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); margin-bottom: 20px; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .hero-title { font-family: var(--font-head); font-size: 1.6rem; line-height: 1.2; margin-bottom: 10px; }
+        .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+        .tag { padding: 6px 14px; background: var(--bg-body); border-radius: 20px; font-size: 0.8rem; font-weight: 500; color: var(--text-sub); border: 1px solid var(--border); }
+        .tag.mod { background: rgba(0, 230, 118, 0.1); color: var(--accent-hover); border-color: transparent; font-weight: 700; }
+
+        .feature-box {
+            background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: var(--radius-md); padding: 16px; margin-bottom: 24px;
+        }
+        .feature-box h3 { color: #D68F00; font-size: 0.95rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .feature-list li { position: relative; padding-left: 24px; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-main); }
+        .feature-list li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #D68F00; font-size: 0.8rem; top: 3px; }
+
+        .desc-text { line-height: 1.7; color: var(--text-sub); font-size: 0.95rem; margin-bottom: 10px; transition: max-height 0.3s; overflow: hidden; position: relative; }
+        .desc-text.collapsed { max-height: 120px; mask-image: linear-gradient(to bottom, black 60%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%); }
+        .read-more-btn { color: var(--accent); font-weight: 600; font-size: 0.9rem; display: inline-block; margin-bottom: 24px; }
+
+        /* Screenshots */
+        .scroller { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 16px; scroll-snap-type: x mandatory; }
+        .scroller img { height: 260px; border-radius: 12px; scroll-snap-align: center; cursor: zoom-in; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .scroller img:active { transform: scale(0.98); }
+
+        /* Sticky Download */
+        .sticky-footer {
+            position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-card);
+            padding: 16px 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.05); z-index: 90;
+            display: flex; align-items: center; justify-content: space-between;
+            animation: slideUp 0.4s ease-out;
+        }
+        .dl-btn {
+            background: var(--accent); color: #000; font-family: var(--font-head);
+            font-weight: 700; padding: 14px 28px; border-radius: 50px; font-size: 1rem;
+            box-shadow: var(--shadow-float); border: none; display: flex; align-items: center; gap: 10px;
+            animation: pulse-green 2s infinite; transition: transform 0.2s;
+        }
+        .dl-btn:active { transform: scale(0.95); animation: none; }
+
+        /* 3.6 Modals (Image Viewer & Download) */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 300;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        
+        /* Image Viewer */
+        .iv-img { max-width: 95%; max-height: 80vh; border-radius: 8px; transform: scale(0.9); transition: transform 0.3s; }
+        .modal-overlay.active .iv-img { transform: scale(1); }
+        .iv-close { position: absolute; top: 20px; right: 20px; color: white; font-size: 2rem; padding: 10px; cursor: pointer; }
+
+        /* Download Modal */
+        .dl-card {
+            background: var(--bg-card); width: 90%; max-width: 400px; padding: 24px; border-radius: 20px; text-align: center;
+            transform: translateY(20px); transition: transform 0.3s;
+        }
+        .modal-overlay.active .dl-card { transform: translateY(0); }
+        .dl-timer { font-size: 2.5rem; font-weight: 800; color: var(--accent); margin: 10px 0; }
+        
+        /* 3.7 Sidebar */
+        .sidebar {
+            position: fixed; top: 0; left: 0; bottom: 0; width: 280px; background: var(--bg-card); z-index: 150;
+            transform: translateX(-100%); transition: transform 0.3s var(--ease-out); padding: 20px; display: flex; flex-direction: column;
+        }
+        .sidebar.active { transform: translateX(0); box-shadow: 10px 0 30px rgba(0,0,0,0.2); }
+        .backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 140; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .backdrop.active { opacity: 1; pointer-events: all; }
+        
+        .side-link { display: flex; align-items: center; gap: 14px; padding: 14px; color: var(--text-main); font-weight: 500; border-radius: 12px; margin-bottom: 8px; transition: background 0.2s; }
+        .side-link.active { background: rgba(0, 230, 118, 0.1); color: var(--accent-hover); }
+        
+        /* 3.8 Filters Bottom Sheet */
+        .filter-sheet {
+            position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-card);
+            border-top-left-radius: 24px; border-top-right-radius: 24px;
+            padding: 24px; z-index: 210; transform: translateY(100%); transition: transform 0.3s var(--ease-out);
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
+        }
+        .filter-sheet.active { transform: translateY(0); }
+        .chip-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+        .chip { padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border); font-size: 0.9rem; color: var(--text-sub); transition: 0.2s; }
+        .chip.selected { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 600; }
+
+        /* Utilities */
+        .spacer { height: 100px; }
+        .error-state { text-align: center; padding: 40px; color: var(--text-sub); }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="backdrop" id="backdrop"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="section-head">
+            <div class="header-logo">Giggy<span>Mod</span></div>
+            <div class="nav-btn ripple" id="closeSidebar"><i class="fa-solid fa-times"></i></div>
+        </div>
+        <nav style="flex: 1; overflow-y: auto;">
+            <a href="#" class="side-link active" data-nav="home"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="#category?name=Action" class="side-link"><i class="fa-solid fa-gamepad"></i> Games</a>
+            <a href="#category?name=Apps" class="side-link"><i class="fa-brands fa-android"></i> Apps</a>
+            <a href="#popular" class="side-link"><i class="fa-solid fa-fire"></i> Trending</a>
+            <div style="height: 1px; background: var(--border); margin: 16px 0;"></div>
+            <a href="#dmca" class="side-link"><i class="fa-solid fa-scale-balanced"></i> DMCA</a>
+            <a href="#privacy" class="side-link"><i class="fa-solid fa-shield-halved"></i> Privacy</a>
+        </nav>
+        <div class="side-link ripple" id="themeToggle" style="margin-top: auto; border: 1px solid var(--border); justify-content: space-between;">
+            <span>Dark Mode</span>
+            <i class="fa-solid fa-moon"></i>
+        </div>
+    </aside>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-bar-wrap">
+            <div class="nav-btn ripple" id="closeSearch"><i class="fa-solid fa-arrow-left"></i></div>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search apps, games..." autocomplete="off">
+            <div class="nav-btn ripple" id="openFilter"><i class="fa-solid fa-sliders"></i></div>
+        </div>
+        <div class="search-results" id="searchResults">
+            <!-- Results injected here -->
+        </div>
+    </div>
+
+    <!-- FILTER BOTTOM SHEET -->
+    <div class="backdrop" id="filterBackdrop" style="z-index: 205;"></div>
+    <div class="filter-sheet" id="filterSheet">
+        <h3 class="section-title">Filter Search</h3>
+        <p style="margin: 10px 0 5px; font-size: 0.9rem; color: var(--text-sub);">Sort By</p>
+        <div class="chip-group" id="sortOptions">
+            <div class="chip selected" data-sort="latest">Latest Updates</div>
+            <div class="chip" data-sort="popular">Most Popular</div>
+            <div class="chip" data-sort="rating">Highest Rated</div>
+        </div>
+        <button class="dl-btn" id="applyFilter" style="width: 100%; margin-top: 24px; justify-content: center;">Apply Filters</button>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header" id="mainHeader">
+        <div class="nav-btn ripple" id="menuBtn"><i class="fa-solid fa-bars"></i></div>
+        <div class="header-logo" onclick="window.location.hash=''">Giggy<span>Mod</span></div>
+        <div class="nav-btn ripple" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></div>
+    </header>
+
+    <!-- MAIN APP CONTAINER -->
+    <main id="app-root">
+        <!-- Dynamic content handled by JS -->
+    </main>
+
+    <!-- IMAGE VIEWER MODAL -->
+    <div class="modal-overlay" id="imgModal">
+        <div class="iv-close"><i class="fa-solid fa-times"></i></div>
+        <img src="" class="iv-img" id="ivImage">
+    </div>
+
+    <!-- DOWNLOAD MODAL -->
+    <div class="modal-overlay" id="dlModal">
+        <div class="dl-card">
+            <i class="fa-solid fa-shield-virus" style="font-size: 3rem; color: var(--accent); margin-bottom: 16px;"></i>
+            <h3 style="margin-bottom: 8px;">Secure Download</h3>
+            <p style="color: var(--text-sub); font-size: 0.9rem; line-height: 1.5;">
+                We are generating your secure download link. Please wait a moment.
+            </p>
+            <div class="dl-timer" id="dlTimer">5</div>
+            <button class="dl-btn" id="finalDlBtn" style="width: 100%; justify-content: center; opacity: 0.5; pointer-events: none;">
+                Start Download
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+
+        // ==========================================
+        // CONFIG & STATE
+        // ==========================================
+   const firebaseConfig = {
+  apiKey: "AIzaSyD18jb0t01RMIlgolz8qKrW38h2PbLubxQ",
+  authDomain: "giggymods.firebaseapp.com",
+  databaseURL: "https://giggymods-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "giggymods",
+  storageBucket: "giggymods.firebasestorage.app",
+  messagingSenderId: "311043307695",
+  appId: "1:311043307695:web:b5f4c6facf72cdafe77c5a"
+};
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        const store = {
+            apps: [],
+            cache: new Map(),
+            theme: localStorage.getItem('theme') || 'light',
+            filter: { sort: 'latest' }
+        };
+
+        // ==========================================
+        // UI CONTROLLER
+        // ==========================================
+        class UI {
+            constructor() {
+                this.root = document.getElementById('app-root');
+                this.initTheme();
+                this.setupGlobalListeners();
+            }
+
+            initTheme() {
+                document.body.setAttribute('data-theme', store.theme);
+                this.updateMetaColor();
+            }
+
+            toggleTheme() {
+                store.theme = store.theme === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', store.theme);
+                this.initTheme();
+            }
+
+            updateMetaColor() {
+                const color = store.theme === 'dark' ? '#141414' : '#ffffff';
+                document.querySelector('meta[name="theme-color"]').setAttribute('content', color);
+            }
+
+            // --- Navigation ---
+            toggleSidebar(show) {
+                const sb = document.getElementById('sidebar');
+                const bd = document.getElementById('backdrop');
+                if (show) {
+                    sb.classList.add('active');
+                    bd.classList.add('active');
+                } else {
+                    sb.classList.remove('active');
+                    bd.classList.remove('active');
+                    document.getElementById('filterSheet').classList.remove('active');
+                    document.getElementById('filterBackdrop').classList.remove('active');
+                }
+            }
+
+            // --- Transitions ---
+            async transitionTo(html) {
+                this.root.classList.add('switching');
+                window.scrollTo({ top: 0, behavior: 'auto' }); // Instant jump
+                
+                await new Promise(r => setTimeout(r, 200));
+                
+                this.root.innerHTML = html;
+                this.root.classList.remove('switching');
+                this.lazyLoadImages();
+                this.attachDynamicListeners();
+            }
+
+            // --- Skeletons ---
+            getCardSkeleton() {
+                return `
+                    <div class="app-card">
+                        <div class="skeleton sk-icon"></div>
+                        <div class="skeleton sk-text"></div>
+                        <div class="skeleton sk-text-sm"></div>
+                    </div>
+                `;
+            }
+
+            renderLoader() {
+                let grid = `<div class="container fade-in"><div class="section-head"><div class="skeleton sk-text" style="width:150px"></div></div><div class="app-grid">`;
+                for(let i=0; i<12; i++) grid += this.getCardSkeleton();
+                grid += `</div></div>`;
+                this.root.innerHTML = grid;
+            }
+
+            // --- Views ---
+            renderHome(apps) {
+                // Sorting Logic
+                const featured = apps.filter(a => a.isFeatured).slice(0, 4);
+                const latest = [...apps].sort((a,b) => b.timestamp - a.timestamp).slice(0, 8);
+                const popular = [...apps].sort((a,b) => b.downloads - a.downloads).slice(0, 8);
+
+                const cardHTML = (a) => `
+                    <div class="app-card ripple" data-id="${a.id}">
+                        <div class="card-badge">MOD</div>
+                        <img data-src="${a.icon}" class="card-icon lazy" alt="${a.name}">
+                        <div class="card-title">${a.name}</div>
+                        <div class="card-meta">
+                            <i class="fa-solid fa-star" style="color:#FFD700; font-size:0.7rem"></i> ${a.rating}
+                            <span style="margin:0 4px">•</span> ${a.size}
+                        </div>
+                    </div>
+                `;
+
+                return `
+                    <div class="container fade-in">
+                        <!-- Featured -->
+                        <div class="section-head">
+                            <h2 class="section-title">Editor's Choice</h2>
+                        </div>
+                        <div class="app-grid" style="margin-bottom: 30px">
+                            ${featured.map(cardHTML).join('')}
+                        </div>
+
+                        <!-- Native Ad Banner Placeholder -->
+                        <div class="skeleton" style="height: 80px; width:100%; margin: 20px 0; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#999;">
+                            Native Ad Space
+                        </div>
+
+                        <!-- Latest -->
+                        <div class="section-head">
+                            <h2 class="section-title">Latest Updates</h2>
+                            <a href="#latest" class="view-all">See All</a>
+                        </div>
+                        <div class="app-grid" style="margin-bottom: 30px">
+                            ${latest.map(cardHTML).join('')}
+                        </div>
+
+                        <!-- Popular -->
+                        <div class="section-head">
+                            <h2 class="section-title">Trending Now</h2>
+                            <a href="#popular" class="view-all">See All</a>
+                        </div>
+                        <div class="app-grid">
+                            ${popular.map(cardHTML).join('')}
+                        </div>
+                        <div class="spacer"></div>
+                    </div>
+                `;
+            }
+
+            renderDetails(app) {
+                document.title = `${app.name} MOD APK ${app.version} Download - GiggyMod`;
+                
+                const features = app.modFeatures || ["Premium Unlocked", "No Ads"];
+                const screenshots = app.screenshots || [];
+
+                return `
+                    <div class="fade-in">
+                        <div class="hero-section">
+                            <img src="${app.icon}" class="hero-icon" alt="${app.name}">
+                            <h1 class="hero-title">${app.name}</h1>
+                            <div class="hero-tags">
+                                <span class="tag">v${app.version}</span>
+                                <span class="tag">${app.size}</span>
+                                <span class="tag mod">MOD Unlocked</span>
+                            </div>
+                            <div style="font-size:0.85rem; color:var(--text-sub)">
+                                ${app.downloads.toLocaleString()} Downloads • Updated ${new Date(app.timestamp).toLocaleDateString()}
+                            </div>
+                        </div>
+
+                        <div class="container" style="padding-bottom: 100px;">
+                            
+                            <!-- Features -->
+                            <div class="feature-box">
+                                <h3><i class="fa-solid fa-bolt"></i> MOD Features</h3>
+                                <ul class="feature-list">
+                                    ${features.map(f => `<li>${f}</li>`).join('')}
+                                </ul>
+                            </div>
+
+                            <!-- Description -->
+                            <h3 style="margin-bottom:10px; font-family:var(--font-head)">About this game</h3>
+                            <div class="desc-text collapsed" id="descText">
+                                ${app.description || "No description available."}
+                                <br><br>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                            </div>
+                            <span class="read-more-btn" id="readMore">Read more</span>
+
+                            <!-- Screenshots -->
+                            <h3 style="margin-bottom:15px; font-family:var(--font-head)">Screenshots</h3>
+                            <div class="scroller">
+                                ${screenshots.map(src => `<img src="${src}" class="iv-trigger" loading="lazy">`).join('')}
+                            </div>
+
+                            <!-- Ad Spacer -->
+                            <div class="skeleton" style="height: 100px; margin-top:30px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#999;">
+                                Advertisement
+                            </div>
+                        </div>
+
+                        <!-- Sticky Footer -->
+                        <div class="sticky-footer">
+                            <div style="display:flex; flex-direction:column;">
+                                <span style="font-weight:700; font-size:1.1rem">${app.size}</span>
+                                <span style="font-size:0.75rem; color:var(--text-sub)">Safe & Secure</span>
+                            </div>
+                            <button class="dl-btn ripple" id="initDownload" data-link="${app.downloadUrl}">
+                                Download <i class="fa-solid fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            renderListing(title, apps) {
+                if(apps.length === 0) return `<div class="container error-state"><i class="fa-regular fa-folder-open" style="font-size:3rem; margin-bottom:10px"></i><p>No results found.</p></div>`;
+
+                return `
+                    <div class="container fade-in">
+                        <div class="section-head">
+                            <h2 class="section-title">${title}</h2>
+                        </div>
+                        <div class="app-grid">
+                            ${apps.map(a => `
+                                <div class="app-card ripple" data-id="${a.id}">
+                                    <div class="card-badge">MOD</div>
+                                    <img data-src="${a.icon}" class="card-icon lazy">
+                                    <div class="card-title">${a.name}</div>
+                                    <div class="card-meta">
+                                        <i class="fa-solid fa-star" style="color:#FFD700; font-size:0.7rem"></i> ${a.rating}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="spacer"></div>
+                    </div>
+                `;
+            }
+
+            // --- Functionality ---
+            lazyLoadImages() {
+                const images = document.querySelectorAll('.lazy');
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            obs.unobserve(img);
+                        }
+                    });
+                });
+                images.forEach(img => observer.observe(img));
+            }
+
+            attachDynamicListeners() {
+                // Card Clicks
+                document.querySelectorAll('.app-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        window.location.hash = `#details?id=${card.dataset.id}`;
+                    });
+                });
+
+                // Read More
+                const rm = document.getElementById('readMore');
+                if (rm) {
+                    rm.addEventListener('click', () => {
+                        document.getElementById('descText').classList.toggle('collapsed');
+                        rm.textContent = rm.textContent === 'Read more' ? 'Show less' : 'Read more';
+                    });
+                }
+
+                // Image Viewer Triggers
+                document.querySelectorAll('.iv-trigger').forEach(img => {
+                    img.addEventListener('click', () => {
+                        const modal = document.getElementById('imgModal');
+                        document.getElementById('ivImage').src = img.src;
+                        modal.classList.add('active');
+                    });
+                });
+
+                // Download Flow
+                const dlBtn = document.getElementById('initDownload');
+                if (dlBtn) {
+                    dlBtn.addEventListener('click', () => {
+                        this.startDownloadFlow(dlBtn.dataset.link);
+                    });
+                }
+            }
+
+            startDownloadFlow(url) {
+                const modal = document.getElementById('dlModal');
+                const timerEl = document.getElementById('dlTimer');
+                const finalBtn = document.getElementById('finalDlBtn');
+                let timeLeft = 5;
+
+                modal.classList.add('active');
+                
+                // Reset
+                timerEl.textContent = timeLeft;
+                finalBtn.style.opacity = '0.5';
+                finalBtn.style.pointerEvents = 'none';
+
+                const interval = setInterval(() => {
+                    timeLeft--;
+                    timerEl.textContent = timeLeft;
+                    if(timeLeft <= 0) {
+                        clearInterval(interval);
+                        timerEl.textContent = "Ready!";
+                        finalBtn.style.opacity = '1';
+                        finalBtn.style.pointerEvents = 'all';
+                        finalBtn.onclick = () => {
+                            window.open(url, '_blank');
+                            modal.classList.remove('active');
+                        };
+                    }
+                }, 1000);
+            }
+
+            setupGlobalListeners() {
+                // Sidebar
+                document.getElementById('menuBtn').onclick = () => this.toggleSidebar(true);
+                document.getElementById('closeSidebar').onclick = () => this.toggleSidebar(false);
+                document.getElementById('backdrop').onclick = () => this.toggleSidebar(false);
+                document.getElementById('themeToggle').onclick = () => this.toggleTheme();
+
+                // Search
+                const sModal = document.getElementById('searchModal');
+                const sInput = document.getElementById('searchInput');
+                
+                document.getElementById('searchBtn').onclick = () => {
+                    sModal.classList.add('active');
+                    setTimeout(() => sInput.focus(), 300);
+                };
+                document.getElementById('closeSearch').onclick = () => sModal.classList.remove('active');
+
+                // Search Debounce
+                let timeout;
+                sInput.addEventListener('input', (e) => {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => this.performSearch(e.target.value), 300);
+                });
+
+                // Filter
+                document.getElementById('openFilter').onclick = () => {
+                    document.getElementById('filterBackdrop').classList.add('active');
+                    document.getElementById('filterSheet').classList.add('active');
+                };
+                document.getElementById('filterBackdrop').onclick = () => {
+                    document.getElementById('filterBackdrop').classList.remove('active');
+                    document.getElementById('filterSheet').classList.remove('active');
+                };
+                
+                // Chip Selection
+                document.querySelectorAll('.chip').forEach(chip => {
+                    chip.onclick = () => {
+                        document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+                        chip.classList.add('selected');
+                        store.filter.sort = chip.dataset.sort;
+                    };
+                });
+
+                document.getElementById('applyFilter').onclick = () => {
+                    document.getElementById('filterBackdrop').classList.remove('active');
+                    document.getElementById('filterSheet').classList.remove('active');
+                    // Logic to re-sort search results would go here in a full app
+                    if(sInput.value) this.performSearch(sInput.value);
+                };
+
+                // Close Modals
+                document.getElementById('imgModal').onclick = () => document.getElementById('imgModal').classList.remove('active');
+                
+                // Close DL Modal on click outside card
+                document.getElementById('dlModal').addEventListener('click', (e) => {
+                    if(e.target === document.getElementById('dlModal')) {
+                        document.getElementById('dlModal').classList.remove('active');
+                    }
+                });
+            }
+
+            performSearch(term) {
+                const results = document.getElementById('searchResults');
+                if(term.length < 2) {
+                    results.innerHTML = ''; 
+                    return;
+                }
+
+                const regex = new RegExp(`(${term})`, 'gi');
+                let hits = store.apps.filter(a => a.name.toLowerCase().includes(term.toLowerCase()));
+
+                // Sort based on filter
+                if(store.filter.sort === 'popular') hits.sort((a,b) => b.downloads - a.downloads);
+                if(store.filter.sort === 'rating') hits.sort((a,b) => b.rating - a.rating);
+
+                if(hits.length === 0) {
+                    results.innerHTML = `<div style="text-align:center; padding:20px; color:var(--text-sub)">No matches found</div>`;
+                    return;
+                }
+
+                results.innerHTML = hits.map(app => `
+                    <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--border);" onclick="window.location.hash='#details?id=${app.id}'; document.getElementById('searchModal').classList.remove('active');">
+                        <img src="${app.icon}" style="width:48px; height:48px; border-radius:10px;">
+                        <div>
+                            <div style="font-weight:600; font-size:0.95rem">${app.name.replace(regex, '<mark>$1</mark>')}</div>
+                            <div style="font-size:0.8rem; color:var(--text-sub)">${app.category} • v${app.version}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // ==========================================
+        // DATA & ROUTING
+        // ==========================================
+        const ui = new UI();
+
+        // Router
+        async function handleRoute() {
+            const hash = window.location.hash;
+            const menuBtn = document.getElementById('menuBtn');
+            const mainHeader = document.getElementById('mainHeader');
+
+            // Scroll Handling
+            window.scrollTo(0, 0);
+
+            // Conditional Header Button
+            if (!hash || hash === '#') {
+                menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                menuBtn.onclick = () => ui.toggleSidebar(true);
+            } else {
+                menuBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i>';
+                menuBtn.onclick = () => window.history.back();
+            }
+
+            // Waiting for data
+            if(store.apps.length === 0) {
+                ui.renderLoader();
+                await fetchApps();
+            }
+
+            if (!hash || hash === '#') {
+                ui.transitionTo(ui.renderHome(store.apps));
+            } 
+            else if (hash.startsWith('#details')) {
+                const id = new URLSearchParams(hash.split('?')[1]).get('id');
+                const app = store.apps.find(a => a.id === id);
+                if (app) ui.transitionTo(ui.renderDetails(app));
+                else ui.transitionTo(`<div class="container"><p>App not found.</p></div>`);
+            } 
+            else if (hash.startsWith('#category')) {
+                const name = new URLSearchParams(hash.split('?')[1]).get('name');
+                const filtered = store.apps.filter(a => a.category === name);
+                ui.transitionTo(ui.renderListing(name, filtered));
+            } 
+            else if (hash === '#popular') {
+                const sorted = [...store.apps].sort((a,b) => b.downloads - a.downloads);
+                ui.transitionTo(ui.renderListing("Trending Apps", sorted));
+            }
+            else if (hash === '#latest') {
+                const sorted = [...store.apps].sort((a,b) => b.timestamp - a.timestamp);
+                ui.transitionTo(ui.renderListing("Latest Uploads", sorted));
+            }
+        }
+
+        // Fetch Data
+        function fetchApps() {
+            return new Promise((resolve) => {
+                const appsRef = ref(db, 'apps');
+                onValue(appsRef, (snapshot) => {
+                    const data = snapshot.val();
+                    if (data) {
+                        store.apps = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+                    }
+                    resolve();
+                }, (error) => {
+                    console.error(error);
+                    resolve(); // Resolve anyway to avoid infinite load
+                });
+            });
+        }
+
+        // Init
+        window.addEventListener('hashchange', handleRoute);
+        // Initial call
+        handleRoute();
+
+        // Hide Header on scroll down (Micro interaction)
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('.header');
+            if (currentScroll > lastScroll && currentScroll > 60) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+            lastScroll = currentScroll;
+        });
+
+    </script>
+</body>
+</html>
