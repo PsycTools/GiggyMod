@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>GiggyMod – Download Premium MOD APKs for Android</title>
+    <meta name="description" content="GiggyMod is the best place to download safe and working MOD APKs. Get premium unlocked apps, games, and tools updated daily.">
+    <meta name="keywords" content="mod apk, mod apk download, premium mod apk, android mod apps, free premium apk, giggymod">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="GiggyMod">
+    <meta name="theme-color" content="#0a0a0a">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="GiggyMod – Download Premium MOD APKs">
+    <meta property="og:description" content="Download the latest and safest MOD APKs. Premium unlocked apps and games.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://giggymod.vercel.app">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1a1a1a;
+            --bg-card: #1e1e1e;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --accent: #00d26a;
+            --accent-dark: #00a854;
+            --accent-glow: rgba(0, 210, 106, 0.3);
+            --danger: #ff4757;
+            --warning: #ffa502;
+            --border: #2a2a2a;
+            --header-height: 60px;
+            --bottom-nav-height: 65px;
+            --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+            --transition-fast: 150ms ease;
+            --transition-normal: 250ms ease;
+            --transition-slow: 350ms ease;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #e8e8e8;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --text-muted: #999999;
+            --border: #e0e0e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            min-height: 100dvh;
+        }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+        .hidden { display: none !important; }
+
+        #app {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 1000;
+            transition: box-shadow var(--transition-normal);
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow-md);
+            background: rgba(20, 20, 20, 0.98);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo-giggy { color: var(--text-primary); }
+        .logo-mod { color: var(--accent); }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .header-btn:hover { background: var(--accent); color: #000; }
+        .header-btn:active { transform: scale(0.95); }
+        .header-btn svg { width: 20px; height: 20px; }
+
+        /* ========== MAIN CONTENT ========== */
+        .main-content {
+            flex: 1;
+            padding-top: var(--header-height);
+            padding-bottom: calc(var(--bottom-nav-height) + var(--safe-area-bottom) + 20px);
+            min-height: 100vh;
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+            animation: fadeIn var(--transition-normal);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* ========== BOTTOM NAVIGATION ========== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: calc(var(--bottom-nav-height) + var(--safe-area-bottom));
+            padding-bottom: var(--safe-area-bottom);
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 8px 0;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 0 0 3px 3px;
+            transition: transform var(--transition-normal);
+        }
+
+        .nav-item.active { color: var(--accent); }
+        .nav-item.active::before { transform: translateX(-50%) scaleX(1); }
+        .nav-item:active { transform: scale(0.95); }
+        .nav-item svg { width: 24px; height: 24px; }
+        .nav-item.active svg { transform: scale(1.1); }
+
+        /* ========== SECTION STYLES ========== */
+        .section { margin-bottom: 28px; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            padding: 0 4px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .see-all-btn {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+
+        .see-all-btn:hover { background: var(--accent-glow); }
+
+        /* ========== HORIZONTAL SCROLL ========== */
+        .scroll-container {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            padding: 4px 0 8px;
+            margin: 0 -16px;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .scroll-container::-webkit-scrollbar { display: none; }
+
+        /* ========== APP CARDS ========== */
+        .app-card {
+            flex: 0 0 140px;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 12px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            scroll-snap-align: start;
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .app-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+
+        .app-card:active { transform: scale(0.98); }
+
+        .app-card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            margin: 0 auto 10px;
+            display: block;
+            object-fit: cover;
+            background: var(--bg-tertiary);
+        }
+
+        .app-card-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 4px;
+        }
+
+        .app-card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        .app-card-rating {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .app-card-rating svg { width: 12px; height: 12px; fill: var(--warning); }
+
+        .mod-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: var(--accent);
+            color: #000;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 3px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 8px var(--accent-glow);
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+            z-index: 5;
+        }
+
+        .favorite-btn svg { width: 14px; height: 14px; fill: none; stroke: #fff; stroke-width: 2; }
+        .favorite-btn.active svg { fill: var(--danger); stroke: var(--danger); }
+        .favorite-btn:hover { transform: scale(1.1); background: rgba(0,0,0,0.8); }
+
+        /* ========== GRID LAYOUT ========== */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .apps-grid .app-card { flex: none; width: 100%; }
+
+        /* ========== FILTER CHIPS ========== */
+        .filter-chips {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding: 8px 0 16px;
+            margin: 0 -16px;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .filter-chips::-webkit-scrollbar { display: none; }
+
+        .filter-chip {
+            flex-shrink: 0;
+            padding: 8px 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .filter-chip:hover { border-color: var(--accent); color: var(--accent); }
+        .filter-chip.active { background: var(--accent); color: #000; border-color: var(--accent); }
+
+        /* ========== SKELETON LOADER ========== */
+        .skeleton {
+            background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-card) 50%, var(--bg-tertiary) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: var(--radius-md);
+        }
+
+        .skeleton-card { flex: 0 0 140px; height: 160px; }
+
+        /* ========== SEARCH OVERLAY ========== */
+        .search-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-primary);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all var(--transition-normal);
+        }
+
+        .search-overlay.active { transform: translateY(0); opacity: 1; }
+
+        .search-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .search-back {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-input-wrapper { flex: 1; }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            color: var(--text-primary);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color var(--transition-fast);
+        }
+
+        .search-input:focus { border-color: var(--accent); }
+        .search-input::placeholder { color: var(--text-muted); }
+
+        .search-results { flex: 1; overflow-y: auto; padding: 16px; }
+
+        .recent-searches { margin-bottom: 24px; }
+
+        .recent-search-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .recent-search-item:hover { color: var(--text-primary); }
+        .recent-search-item svg { width: 18px; height: 18px; }
+
+        /* ========== APP DETAILS ========== */
+        .app-details { animation: fadeIn var(--transition-normal); }
+
+        .app-details-header {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .app-details-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: var(--radius-lg);
+            object-fit: cover;
+            flex-shrink: 0;
+            background: var(--bg-tertiary);
+        }
+
+        .app-details-info { flex: 1; min-width: 0; }
+
+        .app-details-name {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .app-details-developer {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .app-details-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .meta-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-tag.mod { background: var(--accent); color: #000; font-weight: 600; }
+
+        .app-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 12px;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label { font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px; }
+
+        .download-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--accent);
+            color: #000;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            transition: all var(--transition-fast);
+        }
+
+        .download-btn:hover { background: var(--accent-dark); transform: translateY(-2px); }
+        .download-btn:active { transform: scale(0.98); }
+        .download-btn svg { width: 22px; height: 22px; }
+
+        .content-section { margin-bottom: 24px; }
+
+        .content-section-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-section-title svg { width: 20px; height: 20px; color: var(--accent); }
+
+        .mod-features-list { list-style: none; }
+
+        .mod-feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mod-feature-item:last-child { border-bottom: none; }
+
+        .mod-feature-item svg {
+            width: 18px;
+            height: 18px;
+            color: var(--accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .description-text { color: var(--text-secondary); line-height: 1.7; }
+
+        .description-text.collapsed {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px 0;
+        }
+
+        /* ========== SCREENSHOTS ========== */
+        .screenshots-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 4px 0;
+            scrollbar-width: none;
+        }
+
+        .screenshots-container::-webkit-scrollbar { display: none; }
+
+        .screenshot-img {
+            height: 200px;
+            border-radius: var(--radius-md);
+            flex-shrink: 0;
+        }
+
+        /* ========== FAQ ========== */
+        .faq-item {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            margin-bottom: 8px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 14px 16px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .faq-question svg { width: 18px; height: 18px; transition: transform var(--transition-fast); }
+        .faq-item.open .faq-question svg { transform: rotate(180deg); }
+
+        .faq-answer {
+            padding: 0 16px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            color: var(--text-secondary);
+        }
+
+        .faq-item.open .faq-answer { padding: 0 16px 14px; max-height: 200px; }
+
+        /* ========== MODAL ========== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+            max-width: 400px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform var(--transition-normal);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content { transform: scale(1); }
+
+        .modal-header { text-align: center; margin-bottom: 20px; }
+
+        .modal-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .modal-subtitle { color: var(--text-secondary); font-size: 0.9rem; }
+
+        .unlock-step {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: 2px solid transparent;
+        }
+
+        .unlock-step:hover { border-color: var(--accent); }
+        .unlock-step.completed { border-color: var(--accent); background: rgba(0,210,106,0.1); }
+
+        .unlock-step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .unlock-step.completed .unlock-step-icon { background: var(--accent); }
+        .unlock-step-icon svg { width: 20px; height: 20px; }
+        .unlock-step.completed .unlock-step-icon svg { color: #000; }
+
+        .unlock-step-text { flex: 1; }
+        .unlock-step-title { font-weight: 600; margin-bottom: 2px; }
+        .unlock-step-desc { font-size: 0.8rem; color: var(--text-secondary); }
+        .unlock-check { width: 22px; height: 22px; color: var(--accent); }
+
+        .modal-download-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent);
+            color: #000;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            margin-top: 16px;
+            transition: all var(--transition-fast);
+        }
+
+        .modal-download-btn:disabled {
+            background: var(--bg-tertiary);
+            color: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ========== TOAST ========== */
+        .toast-container {
+            position: fixed;
+            bottom: calc(var(--bottom-nav-height) + var(--safe-area-bottom) + 20px);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4000;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            pointer-events: none;
+        }
+
+        .toast {
+            background: var(--bg-secondary);
+            padding: 12px 20px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideUp var(--transition-normal);
+            pointer-events: auto;
+            border: 1px solid var(--border);
+        }
+
+        .toast.success { border-color: var(--accent); }
+        .toast.error { border-color: var(--danger); }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== EMPTY STATE ========== */
+        .empty-state { text-align: center; padding: 60px 20px; }
+        .empty-state-icon { width: 80px; height: 80px; margin: 0 auto 20px; opacity: 0.5; }
+        .empty-state-title { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+        .empty-state-text { color: var(--text-secondary); max-width: 300px; margin: 0 auto; }
+
+        /* ========== WARNING BANNER ========== */
+        .warning-banner {
+            background: rgba(255, 71, 87, 0.15);
+            border: 1px solid var(--danger);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .warning-banner svg { width: 24px; height: 24px; color: var(--danger); flex-shrink: 0; }
+        .warning-banner-text { font-size: 0.9rem; color: var(--text-primary); }
+
+        /* ========== SHARE BUTTONS ========== */
+        .share-buttons { display: flex; gap: 10px; margin-top: 16px; }
+
+        .share-btn {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+
+        .share-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .share-btn svg { width: 18px; height: 18px; }
+
+        /* ========== BACK HEADER ========== */
+        .back-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .back-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .back-btn:hover { background: var(--accent); color: #000; }
+        .back-btn svg { width: 20px; height: 20px; }
+
+        .back-header-title { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; }
+
+        /* ========== DEBUG INFO ========== */
+        .debug-info {
+            background: #1a1a2e;
+            border: 1px solid #16213e;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+            font-size: 0.75rem;
+            font-family: monospace;
+            color: #e94560;
+            word-break: break-all;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (min-width: 768px) {
+            .page-container { padding: 24px; }
+            .app-card { flex: 0 0 160px; padding: 16px; }
+            .apps-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header class="header" id="header">
+            <div class="logo" id="logo">
+                <span class="logo-giggy">Giggy</span><span class="logo-mod">Mod</span>
+            </div>
+            <div class="header-actions">
+                <button class="header-btn" id="searchBtn" aria-label="Search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                    </svg>
+                </button>
+                <button class="header-btn" id="themeBtn" aria-label="Toggle theme">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content" id="mainContent"></main>
+
+        <nav class="bottom-nav" id="bottomNav"></nav>
+
+        <div class="search-overlay" id="searchOverlay"></div>
+
+        <div class="modal-overlay" id="modalOverlay"></div>
+
+        <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+    <script>
+        // ========== FIREBASE CONFIG ==========
+        const firebaseConfig = {
+            apiKey: "AIzaSyD18jb0t01RMIlgolz8qKrW38h2PbLubxQ",
+            authDomain: "giggymods.firebaseapp.com",
+            databaseURL: "https://giggymods-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "giggymods",
+            storageBucket: "giggymods.firebasestorage.app",
+            messagingSenderId: "311043307695",
+            appId: "1:311043307695:web:b5f4c6facf72cdafe77c5a"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // ========== ICONS ==========
+        const Icons = {
+            home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+            games: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><circle cx="17" cy="10" r="1"/><circle cx="15" cy="13" r="1"/></svg>',
+            apps: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
+            adult: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v.01"/><path d="M12 8v4"/></svg>',
+            star: '<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+            heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+            download: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
+            check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>',
+            chevronDown: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>',
+            chevronLeft: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>',
+            clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+            telegram: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>',
+            copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
+            whatsapp: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',
+            warning: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+            x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+            package: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>'
+        };
+
+        // ========== APP STATE ==========
+        const AppState = {
+            currentView: 'home',
+            currentCategory: null,
+            currentAppId: null,
+            currentSection: null,
+            apps: [],
+            cache: {},
+            favorites: JSON.parse(localStorage.getItem('gm_favorites') || '[]'),
+            recentViews: JSON.parse(localStorage.getItem('gm_recent') || '[]'),
+            recentSearches: JSON.parse(localStorage.getItem('gm_searches') || '[]'),
+            unlocks: JSON.parse(localStorage.getItem('gm_unlocks') || '{}'),
+            theme: localStorage.getItem('gm_theme') || 'dark'
+        };
+
+        // ========== UTILITY FUNCTIONS ==========
+        const $ = (sel) => document.querySelector(sel);
+        const $$ = (sel) => document.querySelectorAll(sel);
+
+        const debounce = (fn, delay) => {
+            let timer;
+            return (...args) => {
+                clearTimeout(timer);
+                timer = setTimeout(() => fn(...args), delay);
+            };
+        };
+
+        const sanitize = (str) => {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        };
+
+        const formatNumber = (num) => {
+            if (!num) return '0';
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num.toString();
+        };
+
+        const saveFavorites = () => localStorage.setItem('gm_favorites', JSON.stringify(AppState.favorites));
+        const saveRecentViews = () => localStorage.setItem('gm_recent', JSON.stringify(AppState.recentViews.slice(0, 10)));
+        const saveRecentSearches = () => localStorage.setItem('gm_searches', JSON.stringify(AppState.recentSearches.slice(0, 5)));
+        const saveUnlocks = () => localStorage.setItem('gm_unlocks', JSON.stringify(AppState.unlocks));
+
+        // ========== DATA SERVICE ==========
+        const DataService = {
+            async fetchApps() {
+                if (AppState.cache.apps && AppState.cache.apps.length > 0) {
+                    console.log('📦 Using cached apps:', AppState.cache.apps.length);
+                    return AppState.cache.apps;
+                }
+                
+                try {
+                    console.log('🔄 Fetching apps from Firebase...');
+                    const snapshot = await db.ref('apps').once('value');
+                    const data = snapshot.val();
+                    
+                    console.log('📥 Raw Firebase data:', data);
+                    
+                    if (!data) {
+                        console.warn('⚠️ No data returned from Firebase');
+                        return [];
+                    }
+                    
+                    let apps = [];
+                    
+                    // Handle both object and array formats
+                    if (Array.isArray(data)) {
+                        apps = data.filter(Boolean).map((app, index) => ({
+                            id: app.id || String(index),
+                            ...app
+                        }));
+                    } else if (typeof data === 'object') {
+                        apps = Object.entries(data).map(([key, app]) => ({
+                            id: key,
+                            ...app
+                        }));
+                    }
+                    
+                    console.log('✅ Processed apps:', apps.length, apps);
+                    
+                    AppState.cache.apps = apps;
+                    AppState.apps = apps;
+                    return apps;
+                } catch (error) {
+                    console.error('❌ Firebase error:', error);
+                    return [];
+                }
+            },
+
+            async getAppById(id) {
+                console.log('🔍 Looking for app with ID:', id);
+                
+                if (!id) {
+                    console.error('❌ No ID provided');
+                    return null;
+                }
+                
+                const apps = await this.fetchApps();
+                console.log('📋 All apps for search:', apps.map(a => ({ id: a.id, name: a.name })));
+                
+                // Try exact match first
+                let app = apps.find(a => a.id === id);
+                
+                // Try string comparison
+                if (!app) {
+                    app = apps.find(a => String(a.id) === String(id));
+                }
+                
+                // Try numeric comparison
+                if (!app && !isNaN(id)) {
+                    app = apps.find(a => Number(a.id) === Number(id));
+                }
+                
+                console.log('🎯 Found app:', app);
+                return app || null;
+            },
+
+            getLatestApps(apps, limit = 10) {
+                return [...apps].sort((a, b) => (b.updatedAt || b.createdAt || 0) - (a.updatedAt || a.createdAt || 0)).slice(0, limit);
+            },
+
+            getPopularApps(apps, limit = 10) {
+                return [...apps].sort((a, b) => (b.downloads || 0) - (a.downloads || 0)).slice(0, limit);
+            },
+
+            getTrendingApps(apps, limit = 10) {
+                return [...apps].sort((a, b) => (b.rating || 0) - (a.rating || 0)).slice(0, limit);
+            },
+
+            getRelatedApps(app, apps, limit = 8) {
+                return apps.filter(a => a.id !== app.id && a.category === app.category).slice(0, limit);
+            },
+
+            getFavoriteApps(apps) {
+                return apps.filter(app => AppState.favorites.includes(app.id) || AppState.favorites.includes(String(app.id)));
+            },
+
+            getRecentApps(apps) {
+                return AppState.recentViews.map(id => apps.find(app => app.id === id || String(app.id) === String(id))).filter(Boolean).slice(0, 10);
+            }
+        };
+
+        // ========== COMPONENTS ==========
+        const Components = {
+            skeleton(count = 4) {
+                return Array(count).fill('<div class="skeleton skeleton-card"></div>').join('');
+            },
+
+            appCard(app, inGrid = false) {
+                if (!app) return '';
+                
+                const isFav = AppState.favorites.includes(app.id) || AppState.favorites.includes(String(app.id));
+                
+                return `
+                    <article class="app-card" data-app-id="${app.id}">
+                        ${app.isMod || app.modFeatures ? '<span class="mod-badge">MOD</span>' : ''}
+                        <button class="favorite-btn ${isFav ? 'active' : ''}" data-fav-id="${app.id}" aria-label="Favorite">
+                            ${Icons.heart}
+                        </button>
+                        <img class="app-card-icon" 
+                             src="${app.icon || app.iconUrl || 'data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"%3E%3Crect fill=\"%231a1a1a\" width=\"100\" height=\"100\"/%3E%3Ctext x=\"50\" y=\"55\" text-anchor=\"middle\" fill=\"%23333\" font-size=\"40\"%3E📱%3C/text%3E%3C/svg%3E'}" 
+                             alt="${sanitize(app.name || 'App')}"
+                             loading="lazy"
+                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"%3E%3Crect fill=\"%231a1a1a\" width=\"100\" height=\"100\"/%3E%3Ctext x=\"50\" y=\"55\" text-anchor=\"middle\" fill=\"%23333\" font-size=\"40\"%3E📱%3C/text%3E%3C/svg%3E'">
+                        <h3 class="app-card-name">${sanitize(app.name || 'Unknown App')}</h3>
+                        <div class="app-card-meta">
+                            <span class="app-card-rating">${Icons.star} ${app.rating || '4.5'}</span>
+                            <span>${app.size || 'N/A'}</span>
+                        </div>
+                    </article>
+                `;
+            },
+
+            section(title, id, apps, showSeeAll = true) {
+                if (!apps || apps.length === 0) return '';
+                
+                return `
+                    <section class="section" id="${id}">
+                        <div class="section-header">
+                            <h2 class="section-title">${title}</h2>
+                            ${showSeeAll ? `<button class="see-all-btn" data-section="${id}">See All</button>` : ''}
+                        </div>
+                        <div class="scroll-container">
+                            ${apps.map(app => this.appCard(app)).join('')}
+                        </div>
+                    </section>
+                `;
+            },
+
+            filterChips(filters, activeFilter) {
+                return `
+                    <div class="filter-chips">
+                        ${filters.map(f => `
+                            <button class="filter-chip ${f.id === activeFilter ? 'active' : ''}" data-filter="${f.id}">
+                                ${f.label}
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+            },
+
+            emptyState(title, text) {
+                return `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">${Icons.package}</div>
+                        <h3 class="empty-state-title">${title}</h3>
+                        <p class="empty-state-text">${text}</p>
+                    </div>
+                `;
+            },
+
+            loader() {
+                return `
+                    <div class="page-container">
+                        <div class="scroll-container">${this.skeleton(5)}</div>
+                        <div style="margin-top: 24px;" class="scroll-container">${this.skeleton(5)}</div>
+                    </div>
+                `;
+            },
+
+            warningBanner(text) {
+                return `
+                    <div class="warning-banner">
+                        ${Icons.warning}
+                        <p class="warning-banner-text">${text}</p>
+                    </div>
+                `;
+            }
+        };
+
+        // ========== NAVIGATION ==========
+        const Navigation = {
+            tabs: [
+                { id: 'home', label: 'Home', icon: Icons.home },
+                { id: 'games', label: 'Games', icon: Icons.games },
+                { id: 'apps', label: 'Apps', icon: Icons.apps },
+                { id: 'adult', label: '18+', icon: Icons.adult }
+            ],
+
+            init() {
+                this.renderBottomNav();
+                this.bindEvents();
+                this.handleInitialRoute();
+            },
+
+            renderBottomNav() {
+                $('#bottomNav').innerHTML = this.tabs.map(tab => `
+                    <a class="nav-item ${AppState.currentView === tab.id ? 'active' : ''}" data-view="${tab.id}">
+                        ${tab.icon}
+                        <span>${tab.label}</span>
+                    </a>
+                `).join('');
+            },
+
+            bindEvents() {
+                document.addEventListener('click', e => {
+                    const navItem = e.target.closest('[data-view]');
+                    if (navItem) {
+                        e.preventDefault();
+                        this.navigate(navItem.dataset.view);
+                    }
+                });
+
+                window.addEventListener('popstate', () => this.handleInitialRoute());
+            },
+
+            navigate(view, data = {}) {
+                console.log('🧭 Navigating to:', view, data);
+                
+                AppState.currentView = view;
+                AppState.currentCategory = data.category || null;
+                AppState.currentAppId = data.appId || null;
+                AppState.currentSection = data.section || null;
+
+                const url = this.buildUrl(view, data);
+                history.pushState({ view, ...data }, '', url);
+
+                this.updateActiveNav();
+                Router.render();
+            },
+
+            buildUrl(view, data) {
+                if (view === 'details' && data.appId) return `?app=${data.appId}`;
+                if (view === 'seeall' && data.section) return `?section=${data.section}`;
+                if (['games', 'apps', 'adult'].includes(view)) return `?cat=${view}`;
+                return '/';
+            },
+
+            handleInitialRoute() {
+                const params = new URLSearchParams(window.location.search);
+                
+                if (params.has('app')) {
+                    AppState.currentView = 'details';
+                    AppState.currentAppId = params.get('app');
+                    console.log('📱 App ID from URL:', AppState.currentAppId);
+                } else if (params.has('section')) {
+                    AppState.currentView = 'seeall';
+                    AppState.currentSection = params.get('section');
+                } else if (params.has('cat')) {
+                    const cat = params.get('cat');
+                    AppState.currentView = ['games', 'apps', 'adult'].includes(cat) ? cat : 'home';
+                } else {
+                    AppState.currentView = 'home';
+                }
+
+                this.updateActiveNav();
+                Router.render();
+            },
+
+            updateActiveNav() {
+                $$('[data-view]').forEach(item => {
+                    const isActive = item.dataset.view === AppState.currentView || 
+                                    (AppState.currentView === 'details' && item.dataset.view === 'home');
+                    item.classList.toggle('active', isActive);
+                });
+            }
+        };
+
+        // ========== ROUTER ==========
+        const Router = {
+            async render() {
+                const main = $('#mainContent');
+                main.innerHTML = Components.loader();
+                window.scrollTo(0, 0);
+
+                console.log('🎬 Rendering view:', AppState.currentView);
+
+                try {
+                    switch (AppState.currentView) {
+                        case 'home':
+                            await Views.renderHome();
+                            break;
+                        case 'games':
+                        case 'apps':
+                        case 'adult':
+                            await Views.renderCategory(AppState.currentView);
+                            break;
+                        case 'details':
+                            await Views.renderDetails();
+                            break;
+                        case 'seeall':
+                            await Views.renderSeeAll();
+                            break;
+                        default:
+                            await Views.renderHome();
+                    }
+                } catch (error) {
+                    console.error('❌ Render error:', error);
+                    main.innerHTML = `
+                        <div class="page-container">
+                            <div class="debug-info">
+                                Error: ${error.message}<br>
+                                View: ${AppState.currentView}<br>
+                                AppId: ${AppState.currentAppId}
+                            </div>
+                            ${Components.emptyState('Something went wrong', 'Please try again. Check console for details.')}
+                            <button onclick="location.reload()" style="margin: 20px auto; display: block; padding: 12px 24px; background: var(--accent); color: #000; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">
+                                Reload Page
+                            </button>
+                        </div>
+                    `;
+                }
+            }
+        };
+
+        // ========== VIEWS ==========
+        const Views = {
+            async renderHome() {
+                const apps = await DataService.fetchApps();
+                const main = $('#mainContent');
+                
+                if (apps.length === 0) {
+                    main.innerHTML = `
+                        <div class="page-container">
+                            ${Components.emptyState('No Apps Yet', 'Apps will appear here once added from the admin panel.')}
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const recentApps = DataService.getRecentApps(apps);
+                const favoriteApps = DataService.getFavoriteApps(apps);
+                const latestApps = DataService.getLatestApps(apps);
+                const popularApps = DataService.getPopularApps(apps);
+                const trendingApps = DataService.getTrendingApps(apps);
+
+                let html = '<div class="page-container">';
+                
+                if (recentApps.length > 0) {
+                    html += Components.section('Continue Browsing', 'recent', recentApps, false);
+                }
+                
+                if (favoriteApps.length > 0) {
+                    html += Components.section('Your Favorites', 'favorites', favoriteApps, false);
+                }
+                
+                html += Components.section('Latest Updates', 'latest', latestApps);
+                html += Components.section('Popular Apps', 'popular', popularApps);
+                html += Components.section('Trending Now', 'trending', trendingApps);
+                
+                html += '</div>';
+                main.innerHTML = html;
+            },
+
+            async renderCategory(category) {
+                const apps = await DataService.fetchApps();
+                const main = $('#mainContent');
+                
+                const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+                const filteredApps = apps.filter(app => 
+                    (app.category || '').toLowerCase() === category.toLowerCase()
+                );
+
+                const filters = [
+                    { id: 'all', label: 'All' },
+                    { id: 'mod', label: 'MOD Only' },
+                    { id: 'latest', label: 'Latest' },
+                    { id: 'popular', label: 'Popular' }
+                ];
+
+                let html = '<div class="page-container">';
+                
+                if (category === 'adult') {
+                    html += Components.warningBanner('This section contains adult content (18+). Please verify your age.');
+                }
+                
+                html += `<h1 class="section-title" style="margin-bottom: 12px;">${categoryName} MOD APKs</h1>`;
+                html += Components.filterChips(filters, 'all');
+                
+                if (filteredApps.length === 0) {
+                    html += Components.emptyState(`No ${categoryName} Apps`, 'Apps in this category will appear here.');
+                } else {
+                    html += `<div class="apps-grid">${filteredApps.map(app => Components.appCard(app, true)).join('')}</div>`;
+                }
+                
+                html += '</div>';
+                main.innerHTML = html;
+            },
+
+            async renderDetails() {
+                const main = $('#mainContent');
+                const appId = AppState.currentAppId;
+                
+                console.log('📱 Rendering details for app ID:', appId);
+                
+                if (!appId) {
+                    main.innerHTML = `
+                        <div class="page-container">
+                            ${Components.emptyState('No App Selected', 'Please select an app to view details.')}
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const app = await DataService.getAppById(appId);
+                
+                if (!app) {
+                    main.innerHTML = `
+                        <div class="page-container">
+                            <div class="debug-info">
+                                Requested ID: ${appId}<br>
+                                Type: ${typeof appId}
+                            </div>
+                            ${Components.emptyState('App Not Found', 'This app might have been removed or the link is incorrect.')}
+                            <button class="back-btn" onclick="history.back()" style="margin: 20px auto; display: flex;">
+                                ${Icons.chevronLeft} Go Back
+                            </button>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Add to recent views
+                const appIdStr = String(app.id);
+                AppState.recentViews = [appIdStr, ...AppState.recentViews.filter(id => id !== appIdStr)].slice(0, 10);
+                saveRecentViews();
+
+                const apps = await DataService.fetchApps();
+                const relatedApps = DataService.getRelatedApps(app, apps);
+                const isFav = AppState.favorites.includes(app.id) || AppState.favorites.includes(String(app.id));
+
+                // Prepare MOD features
+                let modFeatures = [];
+                if (app.modFeatures) {
+                    if (Array.isArray(app.modFeatures)) {
+                        modFeatures = app.modFeatures;
+                    } else if (typeof app.modFeatures === 'string') {
+                        modFeatures = app.modFeatures.split('\n').filter(f => f.trim());
+                    }
+                }
+                if (modFeatures.length === 0) {
+                    modFeatures = ['Premium Unlocked', 'Ads Removed', 'All Features Available'];
+                }
+
+                // Prepare screenshots
+                let screenshots = [];
+                if (app.screenshots) {
+                    if (Array.isArray(app.screenshots)) {
+                        screenshots = app.screenshots;
+                    } else if (typeof app.screenshots === 'string') {
+                        screenshots = app.screenshots.split(',').map(s => s.trim()).filter(Boolean);
+                    }
+                }
+
+                main.innerHTML = `
+                    <div class="page-container app-details">
+                        <div class="back-header">
+                            <button class="back-btn" id="backBtn">${Icons.chevronLeft}</button>
+                            <h1 class="back-header-title">${sanitize(app.name || 'App Details')}</h1>
+                        </div>
+
+                        <div class="app-details-header">
+                            <img class="app-details-icon" 
+                                 src="${app.icon || app.iconUrl || ''}" 
+                                 alt="${sanitize(app.name)}"
+                                 onerror="this.style.background='var(--bg-tertiary)'">
+                            <div class="app-details-info">
+                                <h1 class="app-details-name">${sanitize(app.name || 'Unknown')}</h1>
+                                <p class="app-details-developer">${sanitize(app.developer || 'Unknown Developer')}</p>
+                                <div class="app-details-meta">
+                                    ${app.isMod || modFeatures.length ? '<span class="meta-tag mod">MOD</span>' : ''}
+                                    <span class="meta-tag">v${app.version || '1.0'}</span>
+                                    <span class="meta-tag">${app.size || 'N/A'}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="app-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">${app.rating || '4.5'}</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">${formatNumber(app.downloads || 0)}</div>
+                                <div class="stat-label">Downloads</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">${app.requires || app.androidVersion || '5.0+'}</div>
+                                <div class="stat-label">Android</div>
+                            </div>
+                        </div>
+
+                        <button class="download-btn" id="downloadBtn" data-app-id="${app.id}">
+                            ${Icons.download}
+                            <span>Download MOD APK</span>
+                        </button>
+
+                        <div class="share-buttons">
+                            <button class="share-btn" data-share="telegram" data-app-id="${app.id}">
+                                ${Icons.telegram} Share
+                            </button>
+                            <button class="share-btn" data-share="whatsapp" data-app-id="${app.id}">
+                                ${Icons.whatsapp} Share
+                            </button>
+                            <button class="share-btn" data-share="copy" data-app-id="${app.id}">
+                                ${Icons.copy} Copy
+                            </button>
+                        </div>
+
+                        <section class="content-section">
+                            <h2 class="content-section-title">${Icons.check} MOD Features</h2>
+                            <ul class="mod-features-list">
+                                ${modFeatures.map(f => `
+                                    <li class="mod-feature-item">
+                                        ${Icons.check}
+                                        <span>${sanitize(f)}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </section>
+
+                        <section class="content-section">
+                            <h2 class="content-section-title">${Icons.package} About</h2>
+                            <p class="description-text ${(app.description || '').length > 300 ? 'collapsed' : ''}" id="descText">
+                                ${sanitize(app.description || 'No description available for this app.')}
+                            </p>
+                            ${(app.description || '').length > 300 ? '<button class="read-more-btn" id="readMoreBtn">Read More</button>' : ''}
+                        </section>
+
+                        ${screenshots.length > 0 ? `
+                        <section class="content-section">
+                            <h2 class="content-section-title">${Icons.apps} Screenshots</h2>
+                            <div class="screenshots-container">
+                                ${screenshots.map(ss => `
+                                    <img class="screenshot-img" src="${ss}" alt="Screenshot" loading="lazy" onerror="this.style.display='none'">
+                                `).join('')}
+                            </div>
+                        </section>
+                        ` : ''}
+
+                        <section class="content-section">
+                            <h2 class="content-section-title">${Icons.warning} FAQ</h2>
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>Is ${sanitize(app.name)} MOD APK safe?</span>
+                                    ${Icons.chevronDown}
+                                </button>
+                                <div class="faq-answer">Yes, all MOD APKs on GiggyMod are scanned for malware and viruses before upload.</div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>How to install the MOD APK?</span>
+                                    ${Icons.chevronDown}
+                                </button>
+                                <div class="faq-answer">Download the APK, enable "Install from Unknown Sources" in your phone settings, then open and install the APK file.</div>
+                            </div>
+                        </section>
+
+                        ${relatedApps.length > 0 ? Components.section('Related Apps', 'related', relatedApps, false) : ''}
+                    </div>
+                `;
+            },
+
+            async renderSeeAll() {
+                const apps = await DataService.fetchApps();
+                const main = $('#mainContent');
+                const section = AppState.currentSection;
+
+                let filteredApps = apps;
+                let title = 'All Apps';
+
+                switch (section) {
+                    case 'latest':
+                        filteredApps = DataService.getLatestApps(apps, 50);
+                        title = 'Latest Updates';
+                        break;
+                    case 'popular':
+                        filteredApps = DataService.getPopularApps(apps, 50);
+                        title = 'Popular Apps';
+                        break;
+                    case 'trending':
+                        filteredApps = DataService.getTrendingApps(apps, 50);
+                        title = 'Trending Now';
+                        break;
+                }
+
+                main.innerHTML = `
+                    <div class="page-container">
+                        <div class="back-header">
+                            <button class="back-btn" id="backBtn">${Icons.chevronLeft}</button>
+                            <h1 class="back-header-title">${title}</h1>
+                        </div>
+                        <div class="apps-grid">${filteredApps.map(app => Components.appCard(app, true)).join('')}</div>
+                    </div>
+                `;
+            }
+        };
+
+        // ========== SEARCH ==========
+        const Search = {
+            init() {
+                $('#searchBtn').addEventListener('click', () => this.open());
+            },
+
+            open() {
+                const overlay = $('#searchOverlay');
+                overlay.innerHTML = `
+                    <div class="search-header">
+                        <button class="search-back" id="searchClose">${Icons.chevronLeft}</button>
+                        <div class="search-input-wrapper">
+                            <input type="text" class="search-input" id="searchInput" placeholder="Search MOD APKs..." autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="search-results" id="searchResults">
+                        ${this.renderRecentSearches()}
+                    </div>
+                `;
+                overlay.classList.add('active');
+                
+                setTimeout(() => {
+                    const input = $('#searchInput');
+                    input.focus();
+                    this.setupSearch(input);
+                }, 100);
+            },
+
+            close() {
+                $('#searchOverlay').classList.remove('active');
+            },
+
+            renderRecentSearches() {
+                if (AppState.recentSearches.length === 0) {
+                    return '<p style="text-align: center; color: var(--text-muted); padding: 40px;">Start typing to search...</p>';
+                }
+                
+                return `
+                    <div class="recent-searches">
+                        <h3 class="section-title" style="margin-bottom: 12px;">Recent Searches</h3>
+                        ${AppState.recentSearches.map(term => `
+                            <div class="recent-search-item" data-term="${sanitize(term)}">
+                                ${Icons.clock}
+                                <span>${sanitize(term)}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            },
+
+            setupSearch(input) {
+                const results = $('#searchResults');
+                
+                const doSearch = debounce(async (query) => {
+                    if (query.length < 2) {
+                        results.innerHTML = this.renderRecentSearches();
+                        return;
+                    }
+
+                    results.innerHTML = '<div class="scroll-container">' + Components.skeleton(3) + '</div>';
+
+                    const apps = await DataService.fetchApps();
+                    const q = query.toLowerCase();
+                    const matches = apps.filter(app => 
+                        (app.name || '').toLowerCase().includes(q) ||
+                        (app.developer || '').toLowerCase().includes(q)
+                    );
+                    
+                    if (matches.length === 0) {
+                        results.innerHTML = Components.emptyState('No Results', `Nothing found for "${query}"`);
+                        return;
+                    }
+
+                    // Save search
+                    AppState.recentSearches = [query, ...AppState.recentSearches.filter(t => t !== query)].slice(0, 5);
+                    saveRecentSearches();
+
+                    results.innerHTML = `
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">${matches.length} results</p>
+                        <div class="apps-grid">${matches.map(app => Components.appCard(app, true)).join('')}</div>
+                    `;
+                }, 300);
+
+                input.addEventListener('input', e => doSearch(e.target.value));
+            }
+        };
+
+        // ========== DOWNLOAD MODAL ==========
+        const DownloadModal = {
+            currentApp: null,
+            completedSteps: [],
+
+            steps: [
+                { id: 'step1', label: 'Join TheOGcoder', desc: 'Telegram Channel', url: 'https://t.me/TheOGcoder' },
+                { id: 'step2', label: 'Join GiggyMod', desc: 'Official Channel', url: 'https://t.me/GiggyMod' }
+            ],
+
+            async open(appId) {
+                console.log('⬇️ Opening download for:', appId);
+                
+                const app = await DataService.getAppById(appId);
+                if (!app) {
+                    Toast.show('App not found', 'error');
+                    return;
+                }
+
+                this.currentApp = app;
+                this.completedSteps = [];
+
+                // Check if already unlocked
+                const unlockKey = `${app.id}_${app.version || '1'}`;
+                if (AppState.unlocks[unlockKey]) {
+                    this.startDownload();
+                    return;
+                }
+
+                this.render();
+                $('#modalOverlay').classList.add('active');
+            },
+
+            close() {
+                $('#modalOverlay').classList.remove('active');
+            },
+
+            render() {
+                const allComplete = this.completedSteps.length >= this.steps.length;
+
+                $('#modalOverlay').innerHTML = `
+                    <div class="modal-content">
+                        <button class="modal-close" id="modalClose">${Icons.x}</button>
+                        <div class="modal-header">
+                            <h2 class="modal-title">Almost There! 🎉</h2>
+                            <p class="modal-subtitle">Join our channels to unlock download</p>
+                        </div>
+                        
+                        ${this.steps.map(step => {
+                            const isComplete = this.completedSteps.includes(step.id);
+                            return `
+                                <div class="unlock-step ${isComplete ? 'completed' : ''}" data-step-id="${step.id}" data-url="${step.url}">
+                                    <div class="unlock-step-icon">
+                                        ${isComplete ? Icons.check : Icons.telegram}
+                                    </div>
+                                    <div class="unlock-step-text">
+                                        <div class="unlock-step-title">${step.label}</div>
+                                        <div class="unlock-step-desc">${step.desc}</div>
+                                    </div>
+                                    ${isComplete ? `<span class="unlock-check">${Icons.check}</span>` : ''}
+                                </div>
+                            `;
+                        }).join('')}
+                        
+                        <button class="modal-download-btn" id="finalDownloadBtn" ${!allComplete ? 'disabled' : ''}>
+                            ${allComplete ? '⬇️ Download Now' : 'Complete Steps Above'}
+                        </button>
+                    </div>
+                `;
+            },
+
+            completeStep(stepId) {
+                if (!this.completedSteps.includes(stepId)) {
+                    this.completedSteps.push(stepId);
+                    this.render();
+                }
+            },
+
+            startDownload() {
+                if (!this.currentApp) return;
+
+                const unlockKey = `${this.currentApp.id}_${this.currentApp.version || '1'}`;
+                AppState.unlocks[unlockKey] = true;
+                saveUnlocks();
+
+                Toast.show('Download starting...', 'success');
+                
+                const downloadUrl = this.currentApp.downloadUrl || this.currentApp.apkUrl || this.currentApp.download;
+                
+                setTimeout(() => {
+                    if (downloadUrl) {
+                        window.open(downloadUrl, '_blank');
+                    } else {
+                        Toast.show('Download link not available', 'error');
+                    }
+                    this.close();
+                }, 500);
+            }
+        };
+
+        // ========== TOAST ==========
+        const Toast = {
+            show(message, type = 'success') {
+                const container = $('#toastContainer');
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                toast.innerHTML = `
+                    ${type === 'success' ? Icons.check : Icons.warning}
+                    <span>${message}</span>
+                `;
+                container.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            }
+        };
+
+        // ========== THEME ==========
+        const Theme = {
+            init() {
+                document.documentElement.dataset.theme = AppState.theme;
+                $('#themeBtn').addEventListener('click', () => this.toggle());
+            },
+
+            toggle() {
+                AppState.theme = AppState.theme === 'dark' ? 'light' : 'dark';
+                document.documentElement.dataset.theme = AppState.theme;
+                localStorage.setItem('gm_theme', AppState.theme);
+            }
+        };
+
+        // ========== GLOBAL EVENT HANDLERS ==========
+        document.addEventListener('click', e => {
+            // App card click
+            const appCard = e.target.closest('.app-card');
+            if (appCard && !e.target.closest('.favorite-btn')) {
+                const appId = appCard.dataset.appId;
+                console.log('🖱️ Card clicked, App ID:', appId);
+                Navigation.navigate('details', { appId });
+                return;
+            }
+
+            // Favorite button
+            const favBtn = e.target.closest('.favorite-btn');
+            if (favBtn) {
+                e.stopPropagation();
+                const appId = favBtn.dataset.favId;
+                const index = AppState.favorites.findIndex(id => id === appId || String(id) === String(appId));
+                
+                if (index > -1) {
+                    AppState.favorites.splice(index, 1);
+                    favBtn.classList.remove('active');
+                    Toast.show('Removed from favorites', 'success');
+                } else {
+                    AppState.favorites.push(appId);
+                    favBtn.classList.add('active');
+                    Toast.show('Added to favorites', 'success');
+                }
+                saveFavorites();
+                return;
+            }
+
+            // See all button
+            const seeAllBtn = e.target.closest('.see-all-btn');
+            if (seeAllBtn) {
+                const section = seeAllBtn.dataset.section;
+                Navigation.navigate('seeall', { section });
+                return;
+            }
+
+            // Back button
+            if (e.target.closest('#backBtn')) {
+                history.back();
+                return;
+            }
+
+            // Download button
+            if (e.target.closest('#downloadBtn') || e.target.closest('.download-btn')) {
+                const btn = e.target.closest('[data-app-id]');
+                if (btn) {
+                    DownloadModal.open(btn.dataset.appId);
+                }
+                return;
+            }
+
+            // Modal close
+            if (e.target.closest('#modalClose') || e.target.id === 'modalOverlay') {
+                DownloadModal.close();
+                return;
+            }
+
+            // Search close
+            if (e.target.closest('#searchClose')) {
+                Search.close();
+                return;
+            }
+
+            // Unlock steps
+            const unlockStep = e.target.closest('.unlock-step');
+            if (unlockStep) {
+                const url = unlockStep.dataset.url;
+                const stepId = unlockStep.dataset.stepId;
+                window.open(url, '_blank');
+                setTimeout(() => DownloadModal.completeStep(stepId), 2000);
+                return;
+            }
+
+            // Final download button
+            if (e.target.closest('#finalDownloadBtn:not(:disabled)')) {
+                DownloadModal.startDownload();
+                return;
+            }
+
+            // Read more
+            if (e.target.closest('#readMoreBtn')) {
+                const desc = $('#descText');
+                const btn = $('#readMoreBtn');
+                desc.classList.toggle('collapsed');
+                btn.textContent = desc.classList.contains('collapsed') ? 'Read More' : 'Show Less';
+                return;
+            }
+
+            // FAQ toggle
+            const faqItem = e.target.closest('.faq-item');
+            if (faqItem) {
+                faqItem.classList.toggle('open');
+                return;
+            }
+
+            // Share buttons
+            const shareBtn = e.target.closest('.share-btn');
+            if (shareBtn) {
+                const type = shareBtn.dataset.share;
+                const appId = shareBtn.dataset.appId;
+                const url = window.location.origin + `?app=${appId}`;
+                
+                if (type === 'telegram') {
+                    window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}`, '_blank');
+                } else if (type === 'whatsapp') {
+                    window.open(`https://wa.me/?text=${encodeURIComponent('Check this app: ' + url)}`, '_blank');
+                } else if (type === 'copy') {
+                    navigator.clipboard.writeText(url).then(() => {
+                        Toast.show('Link copied!', 'success');
+                    });
+                }
+                return;
+            }
+
+            // Logo click
+            if (e.target.closest('#logo')) {
+                Navigation.navigate('home');
+                return;
+            }
+
+            // Filter chips
+            const filterChip = e.target.closest('.filter-chip');
+            if (filterChip) {
+                $$('.filter-chip').forEach(c => c.classList.remove('active'));
+                filterChip.classList.add('active');
+                // Handle filtering here if needed
+                return;
+            }
+
+            // Recent search item
+            const recentItem = e.target.closest('.recent-search-item');
+            if (recentItem) {
+                const term = recentItem.dataset.term;
+                const input = $('#searchInput');
+                if (input) {
+                    input.value = term;
+                    input.dispatchEvent(new Event('input'));
+                }
+                return;
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            $('#header').classList.toggle('scrolled', window.scrollY > 10);
+        }, { passive: true });
+
+        // ========== INIT ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🚀 GiggyMod Starting...');
+            Theme.init();
+            Navigation.init();
+            Search.init();
+        });
+    </script>
+</body>
+</html>
